@@ -11,17 +11,17 @@ def initDatabase():
 	conn.commit()
 
 def fetchDataFromDatabase():
-	with sqlite3.connect('about.db') as con:
-		cur = con.cursor()
+	with sqlite3.connect('about.db') as conn:
+		cur = conn.cursor()
 		result = cur.execute("SELECT * FROM person ORDER BY id DESC;").fetchone()
 		return jsonify(id = result[0], name = result[1], age = result[2])
 
 def pushDataToDatabase(name, age):
-	with sqlite3.connect('about.db') as con:
-		cur = con.cursor()
+	with sqlite3.connect('about.db') as conn:
+		cur = conn.cursor()
 		sql = f"INSERT INTO person (name, age) VALUES ('{name}', {age});"
 		cur.execute(sql)
-		con.commit()
+		conn.commit()
 
 static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'static')
 
