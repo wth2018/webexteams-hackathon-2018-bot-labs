@@ -51,4 +51,5 @@ def about():
 
 initDatabase()
 pushDataToDatabase("Charles Webex", 15)
-app.run()
+if __name__ == "__main__":
+	app.run()
